@@ -1,13 +1,14 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <div>
-    <main>
-      <h1>Dashboard</h1>
-      <p>This is the Dashboard view.</p>
-    </main>
-   
+    <div class="justify-content">
+      <MoneyTable />
+    </div>
+
+  
   </div>
 </template>
+
+<script setup lang="ts">
+
+import MoneyTable from "../components/MoneyTable.vue";
+</script>

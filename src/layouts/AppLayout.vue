@@ -3,7 +3,8 @@ import AppSidebar from "../components/AppSidebar.vue";
 </script>
 
 <template>
-  <AppSidebar />
-
-  <router-view />
+  <div class="min-h-screen">
+    <AppSidebar />
+    <main class="p-6"><RouterView /></main>
+  </div>
 </template>
