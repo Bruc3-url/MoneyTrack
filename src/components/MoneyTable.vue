@@ -1,7 +1,10 @@
 <template>
-  <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
-    <h1 class="text-center font-bold">Mis Gastos</h1>
-    <table class="table">
+  <h1 class="text-center font-bold">Mis Gastos</h1>
+  <div
+    class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100"
+  >
+  
+    <table class="table table-pin-rows bg-base-200">
       <!-- head -->
       <thead>
         <tr>
@@ -29,8 +32,15 @@
       </tbody>
     </table>
   </div>
+  <InputModal :open="modalOpen" @close="modalOpen = false" />
+  <br>
+  <button class="btn btn-primary" @click="modalOpen = true">Nuevo Gasto</button>
 </template>
 
 <script setup lang="ts">
 import { dashboardData } from "../data/dashboardData";
+import InputModal from "./InputModal.vue";
+import { ref } from "vue";
+
+const modalOpen = ref(false);
 </script>

@@ -1,6 +1,14 @@
 <template>
-    <div>
-        <h1>Gastos</h1>
-        <p>This is the Gastos view.</p>
+    
+     <div>
+    <div class="justify-content">
+      <MoneyTable />
     </div>
+
+  
+  </div>
+    
 </template>
+<script setup lang="ts" >
+import MoneyTable from '../components/MoneyTable.vue';
+</script>

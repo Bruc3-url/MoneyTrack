@@ -1,6 +1,6 @@
 
 <template>
-  <nav class="navbar bg-base-200 shadow-sm px-6">
+  <nav class="navbar bg-base-200 shadow-sm px-6 ">
     <!-- Logo -->
     <div class="flex-2">
       <RouterLink
