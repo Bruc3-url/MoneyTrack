@@ -1,40 +1,34 @@
 <template>
   <dialog id="my_modal_1" class="modal" :open="open">
     <div class="modal-box">
-      <h2>Nuevo gasto</h2>
+      <h2>Nuevo ingreso</h2>
 
       <div class="modal-action flex flex-col">
         <form method="dialog">
           <div>
             <input
               type="text"
-              placeholder="Nombre del proyecto"
+              placeholder="Nombre del ingreso"
               class="input input-bordered input-primary w-full flex-1"
               v-model="nombre"
             />
           </div>
           <br />
+
           <div>
             <input
               type="text"
-              placeholder="Categoria"
-              class="input input-bordered input-primary w-full flex-1"
-              v-model="categoria"
-            />
-          </div>
-          <br />
-          <div>
-            <input
-              type="text"
+              inputmode="numeric"
               placeholder="Cantidad"
               class="input input-bordered input-primary w-full flex-1"
               v-model="cantidad"
+              @input="filtrarCantidad"
             />
           </div>
           <br />
           <!-- if there is a button in form, it will close the modal -->
-          <button class="btn btn-primary mr-5" @click="AgregarGasto">
-            Agregar gasto
+          <button class="btn btn-primary mr-5" @click="AgregarIngreso">
+            Agregar ingreso
           </button>
           <button type="submit" class="btn btn-active btn-error">
             Cancelar
@@ -46,7 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-import { dashboardData } from "../data/dashboardData";
+import { IngresosData } from "../data/dashboardData";
 import { ref } from "vue";
 interface Props {
   open: boolean;
@@ -56,22 +50,25 @@ defineProps<Props>();
 
 const nombre = ref("");
 const categoria = ref("");
-const cantidad = ref(0);
+const cantidad = ref<number>(0);
 
-const AgregarGasto = () => {
-  dashboardData.value.push({
+const filtrarCantidad = () => {
+  
+  cantidad.value = Number(String(cantidad.value).replace(/\D/g, ""));
+};
+
+const AgregarIngreso = () => {
+  IngresosData.value.push({
     nombre: nombre.value,
-    categoria: categoria.value,
     fecha: new Date(),
     hora: new Date(),
-    cantidad: cantidad.value,
+    cantidad: Number(cantidad.value),
   });
-//Limpiar el input
+  //Limpiar el input
   nombre.value = "";
   categoria.value = "";
   cantidad.value = 0;
 
-
-  return dashboardData.value
+  return IngresosData.value;
 };
 </script>

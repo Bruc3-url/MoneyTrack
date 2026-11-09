@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="(gasto, index) in dashboardData"
+          v-for="(gasto, index) in GastosData"
           :key="gasto.nombre + gasto.fecha.toISOString()"
         >
           <th>{{ index + 1 }}</th>
@@ -30,17 +30,39 @@
           <!-- Las demás columnas -->
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th>Total</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>{{ totalGastos }}</th>
+        </tr> </tfoot>
     </table>
   </div>
-  <InputModal :open="modalOpen" @close="modalOpen = false" />
+  <GastosModal :open="modalOpen" @close="modalOpen = false" />
   <br>
-  <button class="btn btn-primary" @click="modalOpen = true">Nuevo Gasto</button>
+  <button class="btn bg-red-600 hover:bg-red-700 text-white" @click="modalOpen = true">Nuevo Gasto</button>
 </template>
 
 <script setup lang="ts">
-import { dashboardData } from "../data/dashboardData";
-import InputModal from "./InputModal.vue";
-import { ref } from "vue";
+import { GastosData } from "../data/dashboardData.ts";
+import GastosModal from "./GastosModal.vue";
+import { ref, computed } from "vue";
 
 const modalOpen = ref(false);
+
+
+//Calcular el total de gastos
+ const totalGastos = computed(() => {
+  let gasto = 0;
+  for (let i = 0; i < GastosData.value.length; i++) {
+    gasto += GastosData.value[i].cantidad;
+  }
+  return gasto;
+});
+
+
+
 </script>

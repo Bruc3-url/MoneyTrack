@@ -6,6 +6,7 @@
   <br>
   <div class="Targetas">
     <MoneyCards/>
+    
   </div>
 </template>
 

@@ -2,7 +2,7 @@
     
      <div>
     <div class="justify-content">
-      <MoneyTable />
+      <GastosTable />
     </div>
 
   
@@ -10,5 +10,5 @@
     
 </template>
 <script setup lang="ts" >
-import MoneyTable from '../components/MoneyTable.vue';
+import GastosTable from '../components/GastosTable.vue';
 </script>
